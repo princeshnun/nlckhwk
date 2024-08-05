@@ -3,6 +3,8 @@ import { ReportTemplateModule } from "./reportTemplate/reportTemplate.module";
 import { ReportModule } from "./report/report.module";
 import { ReportDataModule } from "./reportData/reportData.module";
 import { UserModule } from "./user/user.module";
+import { FloorModule } from "./floor/floor.module";
+import { LocationModule } from "./location/location.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -19,6 +21,8 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
     ReportModule,
     ReportDataModule,
     UserModule,
+    FloorModule,
+    LocationModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

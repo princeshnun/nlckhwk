@@ -36,3 +36,19 @@ model User {
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
+
+model Floor {
+  createdAt DateTime   @default(now())
+  id        String     @id @default(cuid())
+  locations Location[]
+  updatedAt DateTime   @updatedAt
+}
+
+model Location {
+  createdAt  DateTime @default(now())
+  floor      Floor?   @relation(fields: [floorId], references: [id])
+  floorId    String?
+  id         String   @id @default(cuid())
+  roomNumber String?
+  updatedAt  DateTime @updatedAt
+}

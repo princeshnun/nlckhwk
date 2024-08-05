@@ -21,6 +21,14 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
+import { FloorList } from "./floor/FloorList";
+import { FloorCreate } from "./floor/FloorCreate";
+import { FloorEdit } from "./floor/FloorEdit";
+import { FloorShow } from "./floor/FloorShow";
+import { LocationList } from "./location/LocationList";
+import { LocationCreate } from "./location/LocationCreate";
+import { LocationEdit } from "./location/LocationEdit";
+import { LocationShow } from "./location/LocationShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -74,6 +82,20 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
+        />
+        <Resource
+          name="Floor"
+          list={FloorList}
+          edit={FloorEdit}
+          create={FloorCreate}
+          show={FloorShow}
+        />
+        <Resource
+          name="Location"
+          list={LocationList}
+          edit={LocationEdit}
+          create={LocationCreate}
+          show={LocationShow}
         />
       </Admin>
     </div>
