@@ -1,0 +1,49 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Location {
+  createdAt   DateTime               @default(now())
+  id          String                 @id @default(cuid())
+  inventories Inventory[]
+  name        String?
+  typeField   EnumLocationTypeField?
+  updatedAt   DateTime               @updatedAt
+}
+
+model Item {
+  createdAt   DateTime    @default(now())
+  description String?
+  id          String      @id @default(cuid())
+  inventories Inventory[]
+  name        String?
+  updatedAt   DateTime    @updatedAt
+}
+
+model Inventory {
+  createdAt  DateTime  @default(now())
+  id         String    @id @default(cuid())
+  item       Item?     @relation(fields: [itemId], references: [id])
+  itemId     String?
+  location   Location? @relation(fields: [locationId], references: [id])
+  locationId String?
+  quantity   Int?
+  updatedAt  DateTime  @updatedAt
+}
+
+model Floor {
+  createdAt   DateTime @default(now())
+  id          String   @id @default(cuid())
+  name        String?
+  numberField Int?
+  updatedAt   DateTime @updatedAt
+}
+
+enum EnumLocationTypeField {
+  Option1
+}
