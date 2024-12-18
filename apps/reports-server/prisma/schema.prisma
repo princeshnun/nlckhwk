@@ -1,0 +1,54 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ReportTemplate {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model Report {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model ReportData {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model Floor {
+  createdAt DateTime   @default(now())
+  id        String     @id @default(cuid())
+  locations Location[]
+  updatedAt DateTime   @updatedAt
+}
+
+model Location {
+  createdAt  DateTime @default(now())
+  floor      Floor?   @relation(fields: [floorId], references: [id])
+  floorId    String?
+  id         String   @id @default(cuid())
+  roomNumber String?
+  updatedAt  DateTime @updatedAt
+}
